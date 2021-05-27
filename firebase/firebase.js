@@ -2,7 +2,6 @@ import app from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
 import 'firebase/storage'
-
 import firebaseConfig from './config'
 
 class Firebase {
@@ -15,15 +14,14 @@ class Firebase {
     this.storage = app.storage()
   }
 
-  async register(name, lastname, email, password) {
-    const nuevoUsuario = await this.auth.createUserWithEmailAndPassword(
+  async register(name, email, password) {
+    const newUser = await this.auth.createUserWithEmailAndPassword(
       email,
       password
     )
 
-    return await nuevoUsuario.user.updateProfile({
-      displayName: name,
-      displayLastName: lastname
+    return await newUser.user.updateProfile({
+      displayName: name
     })
   }
 
@@ -31,7 +29,7 @@ class Firebase {
     return this.auth.signInWithEmailAndPassword(email, password)
   }
 
-  async cerrarSesion() {
+  async logOut() {
     await this.auth.signOut()
   }
 }
