@@ -16,7 +16,7 @@ const NavBar = () => {
       <p className="flex p-1">Hello Cin! </p>
       <button className="flex p-1">Logout</button>
       <Link href="/login" className="flex p-1">
-        <button bgColor="true">Login</button>
+        <button>Login</button>
       </Link>
       <Link href="/register" className="flex p-1">
         <button className="flex p-1 flex justify-end ">Create Account</button>

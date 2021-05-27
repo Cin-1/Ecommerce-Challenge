@@ -13,6 +13,10 @@ const Layout = props => {
           href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap"
           rel="stylesheet"
         />
+        <link
+          href="https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap"
+          rel="stylesheet"
+        />
         <link href="/static/css/app.css" rel="stylesheet" />
       </Head>
 

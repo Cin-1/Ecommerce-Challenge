@@ -5,7 +5,12 @@ module.exports = {
       primary: '#0E0C18',
       secondary: '#1B1925',
       neutral: '#fff',
-      success: '#9582E1'
+      success: '#9582E1',
+      danger: 'rgb(255, 245, 245)',
+      successhover: '#5241A7'
+    },
+    border: {
+      danger: 'rgb(245, 101, 101)'
     },
     fontFamily: {
       sans: ['Helvetica', 'Arial', 'sans-serif']
