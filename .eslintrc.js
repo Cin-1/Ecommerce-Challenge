@@ -1,18 +1,24 @@
 module.exports = {
   env: {
     browser: true,
-    es2021: true,
+    es2021: true
   },
-  extends: ["airbnb-base"],
-  parser: "babel-eslint",
+  extends: [
+    'eslint:recommended',
+    'plugin:react-hooks/recommended', // React hooks rules
+    'plugin:jsx-a11y/recommended', // Accessibility rules
+    'prettier/@typescript-eslint', // Prettier plugin
+    'plugin:prettier/recommended' // Prettier recommended rules
+  ],
+  parser: 'babel-eslint',
   parserOptions: {
     ecmaVersion: 6,
-    sourceType: "module",
+    sourceType: 'module',
     ecmaFeatures: {
       jsx: true,
       modules: true,
-      experimentalObjectRestSpread: true,
+      experimentalObjectRestSpread: true
     },
-    rules: {},
-  },
-};
+    rules: {}
+  }
+}
