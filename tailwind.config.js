@@ -7,7 +7,8 @@ module.exports = {
       neutral: '#fff',
       success: '#9582E1',
       danger: 'rgb(255, 245, 245)',
-      successhover: '#5241A7'
+      successhover: '#5241A7',
+      navbar: '#1f2937'
     },
     border: {
       danger: 'rgb(245, 101, 101)'
