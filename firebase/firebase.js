@@ -29,7 +29,7 @@ class Firebase {
     return this.auth.signInWithEmailAndPassword(email, password)
   }
 
-  async logOut() {
+  async logout() {
     await this.auth.signOut()
   }
 }
