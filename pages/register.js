@@ -39,14 +39,9 @@ const Register = () => {
       validationSchema={RegisterSchema}
       onSubmit={async function create(values) {
         try {
-          await firebase.register(
-            `${values.name} ${values.lastname}`,
-            values.email,
-            values.password
-          )
+          await firebase.register(values.name, values.email, values.password)
           Router.push('/')
         } catch (error) {
-          console.error(error.message)
           setUserError(error.message)
         }
       }}
@@ -55,107 +50,123 @@ const Register = () => {
         const { errors, touched, isValid, dirty } = formik
         return (
           <div className="flex items-center justify-center bg-primary h-screen w-screen">
-            <div className="flex flex-col items-center justify-center bg-secondary h-96 w-80 rounded">
-              <h1 className="text-neutral">Register to continue</h1>
-              <Form className="w-full px-4">
-                <div className="flex flex-col form-row rounded">
-                  {userError && <p>{userError}</p>}
-                  <label htmlFor="email" className="text-neutral">
-                    Email
-                  </label>
-                  <Field
-                    type="email"
-                    name="email"
-                    id="email"
-                    className={
-                      errors.email && touched.email ? 'input-error' : null
-                    }
-                  />
-                  <ErrorMessage
-                    name="email"
-                    component="span"
-                    className="error"
-                  />
-                </div>
-                <div className="flex flex-col form-row rounded">
-                  <label htmlFor="name" className="text-neutral">
-                    Name
-                  </label>
-                  <Field
-                    type="name"
-                    name="name"
-                    id="name"
-                    className={
-                      errors.name && touched.name ? 'input-error' : null
-                    }
-                  />
-                  <ErrorMessage
-                    name="name"
-                    component="span"
-                    className="error"
-                  />
-                </div>
-                <div className="flex flex-col form-row rounded">
-                  <label htmlFor="lastname" className="text-neutral">
-                    Lastname
-                  </label>
-                  <Field
-                    type="lastname"
-                    name="lastname"
-                    id="lastname"
-                    className={
-                      errors.lastname && touched.lastname ? 'input-error' : null
-                    }
-                  />
-                  <ErrorMessage
-                    name="lastname"
-                    component="span"
-                    className="error"
-                  />
-                </div>
+            <div className="flex flex-col items-center justify-center bg-secondary h-96 register-box sm:w-96 rounded">
+              <h1 className="italic text-2xl text-neutral mb-6">
+                Register to continue
+              </h1>
+              <Form className="w-full px-4 sm:px-8">
+                <div class="grid grid-cols-2 sm:grid-cols-1">
+                  <div className="mr-4 sm:mr-0">
+                    <div className="flex flex-col form-row rounded">
+                      {userError && <p>{userError}</p>}
+                      <label htmlFor="email" className="text-neutral">
+                        Email
+                      </label>
+                      <Field
+                        type="email"
+                        name="email"
+                        id="email"
+                        className={
+                          errors.email && touched.email
+                            ? 'rounded-alert'
+                            : 'rounded'
+                        }
+                      />
+                      <ErrorMessage
+                        name="email"
+                        component="span"
+                        className="error text-xs bg-danger text-danger px-2 w-full border-danger rounded py-1 my-1"
+                      />
+                    </div>
+                    <div className="flex flex-col form-row rounded">
+                      <label htmlFor="name" className="text-neutral">
+                        Name
+                      </label>
+                      <Field
+                        type="name"
+                        name="name"
+                        id="name"
+                        className={
+                          errors.name && touched.name
+                            ? 'rounded-alert'
+                            : 'rounded'
+                        }
+                      />
+                      <ErrorMessage
+                        name="name"
+                        component="span"
+                        className="error text-xs bg-danger text-danger px-2 w-full border-danger rounded py-1 my-1"
+                      />
+                    </div>
+                    <div className="flex flex-col form-row rounded">
+                      <label htmlFor="lastname" className="text-neutral">
+                        Lastname
+                      </label>
+                      <Field
+                        type="lastname"
+                        name="lastname"
+                        id="lastname"
+                        className={
+                          errors.lastname && touched.lastname
+                            ? 'rounded-alert'
+                            : 'rounded'
+                        }
+                      />
+                      <ErrorMessage
+                        name="lastname"
+                        component="span"
+                        className="error text-xs bg-danger text-danger px-2 w-full border-danger rounded py-1 my-1"
+                      />
+                    </div>
+                  </div>
 
-                <div className="flex flex-col form-row rounded">
-                  <label htmlFor="password" className="text-neutral">
-                    Password
-                  </label>
-                  <Field
-                    type="password"
-                    name="password"
-                    id="password"
-                    className={
-                      errors.password && touched.password ? 'input-error' : null
-                    }
-                  />
-                  <ErrorMessage
-                    name="password"
-                    component="span"
-                    className="error"
-                  />
-                </div>
-                <div className="flex flex-col form-row rounded">
-                  <label htmlFor="confirmpass" className="text-neutral">
-                    Confirm Password
-                  </label>
-                  <Field
-                    type="password"
-                    name="confirmpass"
-                    id="confirmpass"
-                    className={
-                      errors.confirmpass && touched.confirmpass
-                        ? 'input-error'
-                        : null
-                    }
-                  />
-                  <ErrorMessage
-                    name="confirmpass"
-                    component="span"
-                    className="error"
-                  />
+                  <div>
+                    <div className="flex flex-col form-row rounded">
+                      <label htmlFor="password" className="text-neutral">
+                        Password
+                      </label>
+                      <Field
+                        type="password"
+                        name="password"
+                        id="password"
+                        className={
+                          errors.password && touched.password
+                            ? 'rounded-alert'
+                            : 'rounded'
+                        }
+                      />
+                      <ErrorMessage
+                        name="password"
+                        component="span"
+                        className="error text-xs bg-danger text-danger px-2 w-full border-danger rounded py-1 my-1"
+                      />
+                    </div>
+                    <div className="flex flex-col form-row rounded">
+                      <label htmlFor="confirmpass" className="text-neutral">
+                        Confirm Password
+                      </label>
+                      <Field
+                        type="password"
+                        name="confirmpass"
+                        id="confirmpass"
+                        className={
+                          errors.confirmpass && touched.confirmpass
+                            ? 'rounded-alert'
+                            : 'rounded'
+                        }
+                      />
+                      <ErrorMessage
+                        name="confirmpass"
+                        component="span"
+                        className="error text-xs bg-danger text-danger px-2 w-full border-danger rounded py-1 my-1"
+                      />
+                    </div>
+                  </div>
                 </div>
 
                 <button
                   type="submit"
-                  className="bg-success hover:bg-successhover duration-300 text-neutral w-full mt-10 rounded"
+                  className="bg-success hover:bg-successhover duration-300 text-neutral h-8 w-full mt-10 rounded"
                   disabled={!(dirty && isValid)}
                 >
                   Register

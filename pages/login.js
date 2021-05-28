@@ -25,12 +25,11 @@ const Login = () => {
     <Formik
       initialValues={initialValues}
       validationSchema={LoginSchema}
-      onSubmit={async function create(values) {
+      onSubmit={async function signin(values) {
         try {
           await firebase.login(values.email, values.password)
           Router.push('/')
         } catch (error) {
-          console.error(error.message)
           setUserError(error.message)
         }
       }}
@@ -39,7 +38,7 @@ const Login = () => {
         const { errors, touched, isValid, dirty } = formik
         return (
           <div className="flex items-center justify-center bg-primary h-screen w-screen">
-            <div className="flex flex-col items-center justify-center bg-secondary h-96 w-80 rounded">
+            <div className="flex flex-col items-center justify-center bg-secondary h-96 w-80 sm:w-96 login-box rounded">
               <h1 className="italic text-2xl text-neutral mb-6">
                 Login to continue
               </h1>
@@ -92,7 +91,7 @@ const Login = () => {
 
                 <button
                   type="submit"
-                  className="bg-success hover:bg-successhover duration-300 text-neutral w-full mt-10 rounded"
+                  className="bg-success hover:bg-successhover duration-300 text-neutral h-8 w-full mt-10 rounded"
                   disabled={!(dirty && isValid)}
                 >
                   Login

@@ -5,7 +5,25 @@
 
 /* Login */
 
+@media screen and (max-width: 767px) {
+  .login-box {
+    height: 380px;
+  }
+}
+
 .rounded-alert {
   border: 1px solid rgb(245, 101, 101);
   border-radius: 0.3rem;
+}
+
+/* Register */
+
+.register-box {
+  width: 40rem;
+}
+
+@media screen and (max-width: 767px) {
+  .register-box {
+    height: 580px;
+  }
 }
