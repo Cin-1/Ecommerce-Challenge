@@ -5,21 +5,22 @@ import { FirebaseContext } from '../firebase'
 const Navigation = ({}) => {
   const [isExpanded, toggleExpansion] = useState(false)
   const { user, firebase } = useContext(FirebaseContext)
+  console.log(user)
 
   return (
-    <nav className="flex items-center justify-between flex-wrap bg-primary p-6">
-      <div className="flex items-center flex-shrink-0 text-neutral mr-6">
+    <nav className="flex flex-wrap items-center justify-between px-6 py-4 bg-secondary">
+      <div className="flex items-center flex-shrink-0 mr-6 text-neutral">
         <Link href="/">
           <a>Mis Fans</a>
         </Link>
       </div>
       <div className="block lg:hidden">
         <button
-          className="flex items-center px-3 py-2 border rounded text-neutral border-teal-400 hover:text-neutral hover:border-neutral"
+          className="flex items-center px-3 py-2 border border-teal-400 rounded text-neutral hover:text-neutral hover:border-neutral"
           onClick={() => toggleExpansion(!isExpanded)}
         >
           <svg
-            className="fill-current h-3 w-3"
+            className="w-3 h-3 fill-current"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -35,42 +36,49 @@ const Navigation = ({}) => {
       >
         <div className="text-sm lg:flex-grow">
           <Link href="/sellers">
-            <a className="block mt-4 lg:inline-block lg:mt-0 text-neutral hover:text-neutral mr-4">
+            <a className="block mt-4 mr-4 lg:inline-block lg:mt-0 text-neutral hover:text-neutral">
               Sellers
             </a>
           </Link>
-        </div>
-      </div>
-
-      {user ? (
-        <>
-          <p className="block mt-4 lg:inline-block lg:mt-0 text-neutral hover:text-neutral mr-4">
-            Hello {user.displayName}!
-          </p>
-
-          <button
-            onClick={() => firebase.logout()}
-            className="inline-block text-sm px-4 py-2 leading-none border rounded text-neutral border-neutral hover:border-transparent hover:text-primary hover:bg-neutral mt-4 lg:mt-0 mr-3"
-          >
-            Logout
-          </button>
-        </>
-      ) : (
-        <>
-          <Link href="/login">
-            <a className="inline-block text-sm px-4 py-2 leading-none border rounded text-neutral border-neutral hover:border-transparent hover:text-primary hover:bg-neutral mt-4 lg:mt-0 mr-3">
-              Login
-            </a>
-          </Link>
-          <div>
-            <Link href="/register">
-              <a className="inline-block text-sm px-4 py-2 leading-none border rounded text-neutral border-neutral hover:border-transparent hover:text-primary hover:bg-neutral mt-4 lg:mt-0 ">
-                Create Account
+          {user && user.displayName === 'admin' ? (
+            <Link href="/admin">
+              <a className="block mt-4 mr-4 lg:inline-block lg:mt-0 text-neutral hover:text-neutral">
+                admin
               </a>
             </Link>
-          </div>
-        </>
-      )}
+          ) : null}
+        </div>
+
+        {user ? (
+          <>
+            <p className="block mt-4 mr-4 lg:inline-block lg:mt-0 text-neutral hover:text-neutral">
+              Hello {user.displayName}!
+            </p>
+
+            <button
+              onClick={() => firebase.logout()}
+              className="inline-block px-4 py-3 mt-4 mr-3 text-sm leading-none rounded text-neutral hover:text-neutral bg-success hover:bg-successhover duration-300 lg:mt-0"
+            >
+              Logout
+            </button>
+          </>
+        ) : (
+          <>
+            <Link href="/login">
+              <a className="inline-block px-4 py-3 mt-4 mr-3 text-sm leading-none rounded text-neutral hover:border-transparent hover:text-neutral bg-success hover:bg-successhover duration-300 lg:mt-0">
+                Login
+              </a>
+            </Link>
+            <div>
+              <Link href="/register">
+                <a className="inline-block px-4 py-3 mt-4 text-sm leading-none rounded text-neutral hover:border-transparent hover:text-neutral bg-success hover:bg-successhover duration-300 lg:mt-0 ">
+                  Create Account
+                </a>
+              </Link>
+            </div>
+          </>
+        )}
+      </div>
     </nav>
   )
 }
