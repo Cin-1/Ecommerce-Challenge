@@ -1,29 +1,17 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { FirebaseContext } from '../firebase'
 
-const people1 = [
-  {
-    name: 'Jane Cooper',
-    title: 'Regional Paradigm Technician',
-    tiktok: 'Optimization',
-    instagram: 'Admin',
-    email: 'jane.cooper@example.com',
-    products: 'showproducts',
-    image:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60'
-  }
-  // More people...
-]
-
-export default function Example() {
+export default function Table() {
   const { user, firebase } = useContext(FirebaseContext)
   const [people, setPeople] = useState([])
-  useEffect(() => {
-    getSellers()
-  }, [])
+
   const getSellers = () => {
     firebase.db.collection('sellers').orderBy('name').onSnapshot(handleSnap)
   }
+
+  useEffect(() => {
+    getSellers()
+  }, [])
 
   function handleSnap(snapshot) {
     const people = snapshot.docs.map(doc => {
