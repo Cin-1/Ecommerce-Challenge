@@ -37,7 +37,7 @@ const Login = () => {
       {formik => {
         const { errors, touched, isValid, dirty } = formik
         return (
-          <div className="flex items-center justify-center bg-primary h-screen w-screen">
+          <div className="flex items-center justify-center bg-primary h-screen w-full">
             <div className="flex flex-col items-center justify-center bg-secondary h-96 w-80 sm:w-96 login-box rounded">
               <h1 className="italic text-2xl text-neutral mb-6">
                 Login to continue

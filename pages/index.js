@@ -1,14 +1,13 @@
 import Layout from '../components/layouts/layout'
 import Carrousel from '../components/carousel'
-import Example from '../components/gridAdmin'
+import Cards from '../components/cards'
 
 export default function Home() {
   return (
     <div>
       <Layout />
-
       <Carrousel />
-      <Example />
+      <Cards />
     </div>
   )
 }

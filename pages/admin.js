@@ -4,7 +4,7 @@ import FileUploader from 'react-firebase-file-uploader'
 import * as Yup from 'yup'
 import Layout from '../components/layouts/layout'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
-
+import GridAdmin from '../components/gridAdmin'
 import { FirebaseContext } from '../firebase'
 
 const initialValues = {
@@ -99,140 +99,146 @@ const NewSeller = () => {
         {formik => {
           const { errors, touched, isValid, dirty } = formik
           return (
-            <div className="flex items-center justify-center w-screen h-screen bg-primary">
-              <div className="flex flex-col items-center justify-center rounded bg-secondary h-96 register-box sm:w-96">
-                <h1 className="mb-6 text-2xl italic text-neutral">
-                  Add New Seller
-                </h1>
-                <Form className="w-full px-4 sm:px-8">
-                  <div class="grid grid-cols-2 sm:grid-cols-1">
-                    <div className="mr-4 sm:mr-0">
-                      <div className="flex flex-col mb-2 rounded form-row">
-                        <label htmlFor="email" className="text-neutral">
-                          Email
-                        </label>
-                        <Field
-                          type="email"
-                          name="email"
-                          id="email"
-                          className={
-                            errors.email && touched.email
-                              ? 'rounded-alert'
-                              : 'rounded'
-                          }
-                        />
-                        <ErrorMessage
-                          name="email"
-                          component="span"
-                          className="w-full px-2 py-1 my-1 text-xs rounded error bg-danger text-danger border-danger"
-                        />
+            <div className="bg-primary w-full h-full">
+              <div className="flex justify-center mb-6">
+                <div className="flex flex-col items-center justify-center mt-8 rounded bg-secondary h-80 register-box sm:w-96">
+                  <h1 className="mb-4 text-2xl italic text-neutral">
+                    Add New Seller
+                  </h1>
+                  <Form className="w-full px-4 sm:px-8">
+                    <div class="grid grid-cols-3 sm:grid-cols-1">
+                      <div className="mr-4 sm:mr-0">
+                        <div className="flex flex-col mb-2 rounded form-row">
+                          <label htmlFor="email" className="text-neutral">
+                            Email
+                          </label>
+                          <Field
+                            type="email"
+                            name="email"
+                            id="email"
+                            className={
+                              errors.email && touched.email
+                                ? 'rounded-alert'
+                                : 'rounded'
+                            }
+                          />
+                          <ErrorMessage
+                            name="email"
+                            component="span"
+                            className="w-full px-2 py-1 my-1 text-xs rounded error bg-danger text-danger border-danger"
+                          />
+                        </div>
+                        <div className="flex flex-col mb-2 rounded form-row">
+                          <label htmlFor="name" className="text-neutral">
+                            Name
+                          </label>
+                          <Field
+                            type="name"
+                            name="name"
+                            id="name"
+                            className={
+                              errors.name && touched.name
+                                ? 'rounded-alert'
+                                : 'rounded'
+                            }
+                          />
+                          <ErrorMessage
+                            name="name"
+                            component="span"
+                            className="w-full px-2 py-1 my-1 text-xs rounded error bg-danger text-danger border-danger"
+                          />
+                        </div>
                       </div>
-                      <div className="flex flex-col mb-2 rounded form-row">
-                        <label htmlFor="name" className="text-neutral">
-                          Name
-                        </label>
-                        <Field
-                          type="name"
-                          name="name"
-                          id="name"
-                          className={
-                            errors.name && touched.name
-                              ? 'rounded-alert'
-                              : 'rounded'
-                          }
-                        />
-                        <ErrorMessage
-                          name="name"
-                          component="span"
-                          className="w-full px-2 py-1 my-1 text-xs rounded error bg-danger text-danger border-danger"
-                        />
+
+                      <div className="mr-4 sm:mr-0">
+                        <div className="flex flex-col mb-2 rounded form-row">
+                          <label htmlFor="title" className="text-neutral">
+                            Title
+                          </label>
+                          <Field
+                            type="title"
+                            name="title"
+                            id="title"
+                            className={
+                              errors.title && touched.title
+                                ? 'rounded-alert'
+                                : 'rounded'
+                            }
+                          />
+                          <ErrorMessage
+                            name="title"
+                            component="span"
+                            className="w-full px-2 py-1 my-1 text-xs rounded error bg-danger text-danger border-danger"
+                          />
+                        </div>
+                        <div className="flex flex-col mb-2 rounded form-row">
+                          <label htmlFor="tiktok" className="text-neutral">
+                            TikTok
+                          </label>
+                          <Field
+                            type="text"
+                            name="tiktok"
+                            id="tiktok"
+                            className={
+                              errors.tiktok && touched.tiktok
+                                ? 'rounded-alert'
+                                : 'rounded'
+                            }
+                          />
+                          <ErrorMessage
+                            name="tiktok"
+                            component="span"
+                            className="w-full px-2 py-1 my-1 text-xs rounded error bg-danger text-danger border-danger"
+                          />
+                        </div>
                       </div>
-                      <div className="flex flex-col mb-2 rounded form-row">
-                        <label htmlFor="title" className="text-neutral">
-                          Title
-                        </label>
-                        <Field
-                          type="title"
-                          name="title"
-                          id="title"
-                          className={
-                            errors.title && touched.title
-                              ? 'rounded-alert'
-                              : 'rounded'
-                          }
-                        />
-                        <ErrorMessage
-                          name="title"
-                          component="span"
-                          className="w-full px-2 py-1 my-1 text-xs rounded error bg-danger text-danger border-danger"
+
+                      <div className="mr-4 sm:mr-0">
+                        <div className="flex flex-col mb-6 rounded form-row">
+                          <label htmlFor="instagram" className="text-neutral">
+                            Instagram
+                          </label>
+                          <Field
+                            type="text"
+                            name="instagram"
+                            id="instagram"
+                            className={
+                              errors.instagram && touched.instagram
+                                ? 'rounded-alert'
+                                : 'rounded'
+                            }
+                          />
+                          <ErrorMessage
+                            name="instagram"
+                            component="span"
+                            className="w-full px-2 py-1 my-1 text-xs rounded error bg-danger text-danger border-danger"
+                          />
+                        </div>
+                        <FileUploader
+                          accept="image/*"
+                          id="avatar"
+                          name="avatar"
+                          randomizeFilename
+                          storageRef={firebase.storage.ref('sellers')}
+                          onUploadStart={handleUploadStart}
+                          onUploadError={handleUploadError}
+                          onUploadSuccess={handleUploadSuccess}
+                          onProgress={handleProgress}
                         />
                       </div>
                     </div>
 
-                    <div>
-                      <div className="flex flex-col mb-2 rounded form-row">
-                        <label htmlFor="tiktok" className="text-neutral">
-                          TikTok
-                        </label>
-                        <Field
-                          type="text"
-                          name="tiktok"
-                          id="tiktok"
-                          className={
-                            errors.tiktok && touched.tiktok
-                              ? 'rounded-alert'
-                              : 'rounded'
-                          }
-                        />
-                        <ErrorMessage
-                          name="tiktok"
-                          component="span"
-                          className="w-full px-2 py-1 my-1 text-xs rounded error bg-danger text-danger border-danger"
-                        />
-                      </div>
-                      <div className="flex flex-col mb-6 rounded form-row">
-                        <label htmlFor="instagram" className="text-neutral">
-                          Instagram
-                        </label>
-                        <Field
-                          type="text"
-                          name="instagram"
-                          id="instagram"
-                          className={
-                            errors.instagram && touched.instagram
-                              ? 'rounded-alert'
-                              : 'rounded'
-                          }
-                        />
-                        <ErrorMessage
-                          name="instagram"
-                          component="span"
-                          className="w-full px-2 py-1 my-1 text-xs rounded error bg-danger text-danger border-danger"
-                        />
-                      </div>
-                      <FileUploader
-                        accept="image/*"
-                        id="avatar"
-                        name="avatar"
-                        randomizeFilename
-                        storageRef={firebase.storage.ref('sellers')}
-                        onUploadStart={handleUploadStart}
-                        onUploadError={handleUploadError}
-                        onUploadSuccess={handleUploadSuccess}
-                        onProgress={handleProgress}
-                      />
-                    </div>
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="w-full h-8 mt-10 duration-300 rounded bg-success hover:bg-successhover text-neutral"
-                    disabled={!(dirty && isValid)}
-                  >
-                    Create
-                  </button>
-                </Form>
+                    <button
+                      type="submit"
+                      className="w-full h-8 mt-4 duration-300 rounded bg-success hover:bg-successhover text-neutral"
+                      disabled={!(dirty && isValid)}
+                    >
+                      Create
+                    </button>
+                  </Form>
+                </div>
               </div>
+              <GridAdmin />
             </div>
           )
         }}

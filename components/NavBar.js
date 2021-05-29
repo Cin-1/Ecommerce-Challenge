@@ -5,7 +5,6 @@ import { FirebaseContext } from '../firebase'
 const Navigation = ({}) => {
   const [isExpanded, toggleExpansion] = useState(false)
   const { user, firebase } = useContext(FirebaseContext)
-  console.log(user)
 
   return (
     <nav className="flex flex-wrap items-center justify-between px-6 py-4 bg-secondary">
@@ -57,7 +56,7 @@ const Navigation = ({}) => {
 
             <button
               onClick={() => firebase.logout()}
-              className="inline-block px-4 py-3 mt-4 mr-3 text-sm leading-none rounded text-neutral hover:text-neutral bg-success hover:bg-successhover duration-300 lg:mt-0"
+              className="inline-block px-4 py-3 mt-4 mr-3 text-sm leading-none duration-300 rounded text-neutral hover:text-neutral bg-success hover:bg-successhover lg:mt-0"
             >
               Logout
             </button>
@@ -65,13 +64,13 @@ const Navigation = ({}) => {
         ) : (
           <>
             <Link href="/login">
-              <a className="inline-block px-4 py-3 mt-4 mr-3 text-sm leading-none rounded text-neutral hover:border-transparent hover:text-neutral bg-success hover:bg-successhover duration-300 lg:mt-0">
+              <a className="inline-block px-4 py-3 mt-4 mr-3 text-sm leading-none duration-300 rounded text-neutral hover:border-transparent hover:text-neutral bg-success hover:bg-successhover lg:mt-0">
                 Login
               </a>
             </Link>
             <div>
               <Link href="/register">
-                <a className="inline-block px-4 py-3 mt-4 text-sm leading-none rounded text-neutral hover:border-transparent hover:text-neutral bg-success hover:bg-successhover duration-300 lg:mt-0 ">
+                <a className="inline-block px-4 py-3 mt-4 text-sm leading-none duration-300 rounded text-neutral hover:border-transparent hover:text-neutral bg-success hover:bg-successhover lg:mt-0 ">
                   Create Account
                 </a>
               </Link>

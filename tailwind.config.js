@@ -8,10 +8,14 @@ module.exports = {
       success: '#9582E1',
       danger: 'rgb(255, 245, 245)',
       successhover: '#5241A7',
-      navbar: '#1f2937'
+      navbar: '#1f2937',
+      table: ''
     },
     border: {
       danger: 'rgb(245, 101, 101)'
+    },
+    divideColor: {
+      primary: '#D3D3D3'
     },
     fontFamily: {
       sans: ['Helvetica', 'Arial', 'sans-serif']

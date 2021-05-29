@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
+import { FirebaseContext } from '../firebase'
 
-const people = [
+const people1 = [
   {
     name: 'Jane Cooper',
     title: 'Regional Paradigm Technician',
@@ -15,87 +16,97 @@ const people = [
 ]
 
 export default function Example() {
+  const { user, firebase } = useContext(FirebaseContext)
+  const [people, setPeople] = useState([])
+  useEffect(() => {
+    getSellers()
+  }, [])
+  const getSellers = () => {
+    firebase.db.collection('sellers').orderBy('name').onSnapshot(handleSnap)
+  }
+
+  function handleSnap(snapshot) {
+    const people = snapshot.docs.map(doc => {
+      return {
+        id: doc.id,
+        ...doc.data()
+      }
+    })
+    setPeople(people)
+  }
   return (
     <div className="flex flex-col">
-      <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-        <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-          <div className="overflow-hidden border-b border-gray-200 shadow sm:rounded-lg">
-            <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-gray-50">
+      <div className="overflow-x-auto">
+        <div className="inline-block w-full align-middle">
+          <div className="overflow-hidden sm:rounded-lg">
+            <table className="w-full divide-y divide-primary">
+              <thead className="bg-table">
                 <tr>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+                    className="py-3 text-xs font-medium tracking-wider text-left uppercase text-neutral"
                   >
                     Name
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+                    className="py-3 text-xs font-medium tracking-wider text-left uppercase text-neutral"
                   >
                     Title
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
-                  >
-                    TikTok
-                  </th>
+                    className="py-3 text-xs font-medium tracking-wider text-left uppercase text-neutral"
+                  ></th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
-                  >
-                    Instagram
-                  </th>
+                    className="py-3 text-xs font-medium tracking-wider text-left uppercase text-neutral"
+                  ></th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+                    className="py-3 text-xs font-medium tracking-wider text-left uppercase text-neutral"
                   >
                     Products
                   </th>
-                  <th scope="col" className="relative px-6 py-3">
+                  <th scope="col" className="relative py-3">
                     <span className="sr-only">Edit</span>
                   </th>
                 </tr>
               </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
+              <tbody className="divide-y divide-primary bg-secondary">
                 {people.map(person => (
                   <tr key={person.email}>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="py-4 whitespace-nowrap">
                       <div className="flex items-center">
                         <div className="flex-shrink-0 w-10 h-10">
                           <img
                             className="w-10 h-10 rounded-full"
-                            src={person.image}
+                            src={person.urlImg}
                             alt=""
                           />
                         </div>
                         <div className="ml-4">
-                          <div className="text-sm font-medium text-gray-900">
+                          <div className="text-sm font-medium text-neutral">
                             {person.name}
                           </div>
-                          <div className="text-sm text-gray-500">
+                          <div className="text-sm text-neutral">
                             {person.email}
                           </div>
                         </div>
                       </div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">
-                        {person.title}
-                      </div>
+                    <td className="py-4 whitespace-nowrap">
+                      <div className="text-sm text-neutral">{person.title}</div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-500">
-                        {person.tiktok}
-                      </div>
+                    <td className="py-4 whitespace-nowrap">
+                      <div className="text-sm text-neutral">O</div>
                     </td>
-                    <td className="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
-                      {person.instagram}
+                    <td className="py-4 text-sm text-neutral whitespace-nowrap">
+                      O
                     </td>
-                    <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                      <td className="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
-                        {person.instagram}
+                    <td className="py-4 text-sm font-medium text-right whitespace-nowrap">
+                      <td className="py-4 text-sm text-neutral whitespace-nowrap">
+                        []
                       </td>
                     </td>
                   </tr>

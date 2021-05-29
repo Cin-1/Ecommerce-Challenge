@@ -49,15 +49,15 @@ const Register = () => {
       {formik => {
         const { errors, touched, isValid, dirty } = formik
         return (
-          <div className="flex items-center justify-center bg-primary h-screen w-screen">
-            <div className="flex flex-col items-center justify-center bg-secondary h-96 register-box sm:w-96 rounded">
-              <h1 className="italic text-2xl text-neutral mb-6">
+          <div className="flex items-center justify-center w-full h-screen bg-primary">
+            <div className="flex flex-col items-center justify-center rounded bg-secondary h-96 register-box sm:w-96">
+              <h1 className="mb-6 text-2xl italic text-neutral">
                 Register to continue
               </h1>
               <Form className="w-full px-4 sm:px-8">
                 <div class="grid grid-cols-2 sm:grid-cols-1">
                   <div className="mr-4 sm:mr-0">
-                    <div className="flex flex-col form-row rounded">
+                    <div className="flex flex-col rounded form-row">
                       {userError && <p>{userError}</p>}
                       <label htmlFor="email" className="text-neutral">
                         Email
@@ -75,10 +75,10 @@ const Register = () => {
                       <ErrorMessage
                         name="email"
                         component="span"
-                        className="error text-xs bg-danger text-danger px-2 w-full border-danger rounded py-1 my-1"
+                        className="w-full px-2 py-1 my-1 text-xs rounded error bg-danger text-danger border-danger"
                       />
                     </div>
-                    <div className="flex flex-col form-row rounded">
+                    <div className="flex flex-col rounded form-row">
                       <label htmlFor="name" className="text-neutral">
                         Name
                       </label>
@@ -95,10 +95,10 @@ const Register = () => {
                       <ErrorMessage
                         name="name"
                         component="span"
-                        className="error text-xs bg-danger text-danger px-2 w-full border-danger rounded py-1 my-1"
+                        className="w-full px-2 py-1 my-1 text-xs rounded error bg-danger text-danger border-danger"
                       />
                     </div>
-                    <div className="flex flex-col form-row rounded">
+                    <div className="flex flex-col rounded form-row">
                       <label htmlFor="lastname" className="text-neutral">
                         Lastname
                       </label>
@@ -115,13 +115,13 @@ const Register = () => {
                       <ErrorMessage
                         name="lastname"
                         component="span"
-                        className="error text-xs bg-danger text-danger px-2 w-full border-danger rounded py-1 my-1"
+                        className="w-full px-2 py-1 my-1 text-xs rounded error bg-danger text-danger border-danger"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <div className="flex flex-col form-row rounded">
+                    <div className="flex flex-col rounded form-row">
                       <label htmlFor="password" className="text-neutral">
                         Password
                       </label>
@@ -138,10 +138,10 @@ const Register = () => {
                       <ErrorMessage
                         name="password"
                         component="span"
-                        className="error text-xs bg-danger text-danger px-2 w-full border-danger rounded py-1 my-1"
+                        className="w-full px-2 py-1 my-1 text-xs rounded error bg-danger text-danger border-danger"
                       />
                     </div>
-                    <div className="flex flex-col form-row rounded">
+                    <div className="flex flex-col rounded form-row">
                       <label htmlFor="confirmpass" className="text-neutral">
                         Confirm Password
                       </label>
@@ -158,7 +158,7 @@ const Register = () => {
                       <ErrorMessage
                         name="confirmpass"
                         component="span"
-                        className="error text-xs bg-danger text-danger px-2 w-full border-danger rounded py-1 my-1"
+                        className="w-full px-2 py-1 my-1 text-xs rounded error bg-danger text-danger border-danger"
                       />
                     </div>
                   </div>
@@ -166,7 +166,7 @@ const Register = () => {
 
                 <button
                   type="submit"
-                  className="bg-success hover:bg-successhover duration-300 text-neutral h-8 w-full mt-10 rounded"
+                  className="w-full h-8 mt-10 duration-300 rounded bg-success hover:bg-successhover text-neutral"
                   disabled={!(dirty && isValid)}
                 >
                   Register
