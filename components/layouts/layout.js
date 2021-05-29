@@ -1,5 +1,4 @@
 import React from 'react'
-import Link from 'next/link'
 import Head from 'next/head'
 import NavBar from '../NavBar'
 
@@ -17,7 +16,7 @@ const Layout = props => {
           href="https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap"
           rel="stylesheet"
         />
-        <link href="/static/css/app.css" rel="stylesheet" />
+        <link href="/styles/global.css" rel="stylesheet" />
       </Head>
 
       <main>{props.children}</main>
