@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react'
 import Link from 'next/link'
 import { FirebaseContext } from '../firebase'
+import { AiOutlineShoppingCart } from 'react-icons/ai'
 
 const Navigation = ({}) => {
   const [isExpanded, toggleExpansion] = useState(false)
@@ -48,7 +49,11 @@ const Navigation = ({}) => {
             <p className="block mt-4 mr-4 lg:inline-block lg:mt-0 text-neutral hover:text-neutral">
               Hello {user.displayName}!
             </p>
-
+            <button className="py-2 mr-3 text-3xl text-neutral ">
+              <Link href="/shopping-cart">
+                <AiOutlineShoppingCart />
+              </Link>
+            </button>
             <button
               onClick={() => firebase.logout()}
               className="inline-block px-4 py-3 mt-4 mr-3 text-sm leading-none duration-300 rounded text-neutral hover:text-neutral bg-success hover:bg-successhover lg:mt-0"
