@@ -77,6 +77,7 @@ const NewSeller = () => {
         initialValues={initialValues}
         validationSchema={sellerSchema}
         onSubmit={async function createSeller(values, { resetForm }) {
+          console.log('en el submit')
           try {
             const { email, name, title, tiktok, instagram } = values
             const NewSeller = {
@@ -99,7 +100,7 @@ const NewSeller = () => {
         {formik => {
           const { errors, touched, isValid, dirty } = formik
           return (
-            <div className="bg-primary w-full h-full">
+            <div className="w-full h-full bg-primary">
               <div className="flex justify-center mb-6">
                 <div className="flex flex-col items-center justify-center mt-8 rounded bg-secondary h-80 register-box sm:w-96">
                   <h1 className="mb-4 text-2xl italic text-neutral">
