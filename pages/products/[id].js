@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import Layout from '../../components/layouts/layout'
 import { FirebaseContext } from '../../firebase'
 import { useRouter } from 'next/router'
-import ProductsCard from '../../components/productsCart'
+import ProductsCard from '../../components/productsCard'
 
 function Products() {
   const [productsData, setproductsData] = useState([])

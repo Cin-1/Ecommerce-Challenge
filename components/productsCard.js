@@ -28,11 +28,18 @@ function ProductsCard({ product }) {
           <div className="ml-6"></div>
         </div>
         {user ? (
-          <Link href="/products[id]" as={`/products/${product.id}`}>
-            <button className="inline-block px-4 py-3 mt-10 mr-3 text-sm leading-none duration-300 rounded text-neutral hover:text-neutral bg-success hover:bg-successhover lg:mt-0">
-              Add to cart
-            </button>
-          </Link>
+          <>
+            <Link href="/products[id]" as={`/products/${product.id}`}>
+              <button className="inline-block px-4 py-2 mt-5 mr-3 text-sm leading-none duration-300 rounded text-neutral hover:text-neutral bg-success hover:bg-successhover lg:mt-0">
+                Add to cart
+              </button>
+            </Link>
+            <Link href="/products[id]" as={`/products/${product.id}`}>
+              <button className="inline-block px-4 py-2 mt-5 mr-3 text-sm leading-none duration-300 rounded text-neutral hover:text-neutral bg-success hover:bg-successhover lg:mt-0">
+                Proceed to checkout
+              </button>
+            </Link>
+          </>
         ) : (
           <button className="inline-block px-4 py-3 mt-10 mr-3 text-sm leading-none duration-300 rounded text-neutral hover:text-neutral bg-success hover:bg-successhover lg:mt-0">
             Login to buy!
