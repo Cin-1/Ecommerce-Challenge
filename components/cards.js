@@ -1,9 +1,14 @@
 import React, { useContext } from 'react'
 import { FirebaseContext } from '../firebase'
+import Link from 'next/link'
+import {
+  AiOutlineInstagram,
+  AiOutlineMail,
+  AiOutlineFacebook
+} from 'react-icons/ai'
 
 function Index({ person }) {
   const { user, firebase } = useContext(FirebaseContext)
-
   return (
     <>
       <div className="flex flex-col px-3 py-16 m-5 rounded-lg xl:w-1/4 2xl:w-1/5 md:py-12 bg-gradient-to-r from-indigo-700 to-purple-500">
@@ -23,23 +28,28 @@ function Index({ person }) {
           </div>
         </div>
         <div className="flex items-center mb-5 mt-7">
-          <div className>
-            <p className="text-xs text-gray-300">Products</p>
-            <p className="text-xs text-gray-300">{person.email}</p>
+          <div className="ml-6">
+            <Link href={person.instagram}>
+              <AiOutlineFacebook />
+            </Link>
           </div>
           <div className="ml-6">
-            <p className="text-xs text-gray-300">Revenue</p>
-            <p className="text-xs text-gray-300">{person.name}</p>
+            <Link href={person.instagram}>
+              <AiOutlineMail />
+            </Link>
           </div>
           <div className="ml-6">
-            <p className="text-xs text-gray-300">Average</p>
-            <p className="text-xs text-gray-300">$169</p>
+            <Link href={person.instagram}>
+              <AiOutlineInstagram />
+            </Link>
           </div>
         </div>
         {user ? (
-          <button className="inline-block px-4 py-3 mt-10 mr-3 text-sm leading-none duration-300 rounded text-neutral hover:text-neutral bg-success hover:bg-successhover lg:mt-0">
-            SHOP!
-          </button>
+          <Link href="/products[id]" as={`/products/${person.id}`}>
+            <button className="inline-block px-4 py-3 mt-10 mr-3 text-sm leading-none duration-300 rounded text-neutral hover:text-neutral bg-success hover:bg-successhover lg:mt-0">
+              SHOP!
+            </button>
+          </Link>
         ) : (
           <button className="inline-block px-4 py-3 mt-10 mr-3 text-sm leading-none duration-300 rounded text-neutral hover:text-neutral bg-success hover:bg-successhover lg:mt-0">
             Login to buy!
