@@ -9,12 +9,14 @@ import { AiOutlineUserAdd } from 'react-icons/ai'
 
 const initialValues = {
   product: '',
+  price: 0,
   description: ''
 }
 
 const ProductSchema = Yup.object().shape({
   product: Yup.string().required('product is required'),
-  description: Yup.string().required('description is required')
+  price: Yup.number().required('price is required'),
+  description: Yup.string().required('price is required')
 })
 
 export default function Modal({ person }) {
@@ -58,14 +60,14 @@ export default function Modal({ person }) {
       validationSchema={ProductSchema}
       onSubmit={async function addProducts(values, { resetForm }) {
         try {
-          const { product, description } = values
+          const { product, price, description } = values
           const products = {
             user: person.id,
             product,
+            price,
             description,
             urlImg
           }
-          console.log(products)
           await firebase.db.collection('products').add(products)
           resetForm({})
         } catch (error) {
@@ -124,6 +126,28 @@ export default function Modal({ person }) {
                           <div>
                             <ErrorMessage
                               name="product"
+                              component="span"
+                              className="flex flex-col w-full px-2 py-1 my-1 text-xs rounded form-row bg-danger text-danger border-danger"
+                            />
+                          </div>
+                        </div>
+                        <div className="flex flex-col mb-2 rounded form-row">
+                          <label htmlFor="price" className="text-neutral">
+                            Price
+                          </label>
+                          <Field
+                            type="number"
+                            name="price"
+                            id="price"
+                            className={
+                              errors.product && touched.product
+                                ? 'rounded-alert'
+                                : 'rounded'
+                            }
+                          />
+                          <div>
+                            <ErrorMessage
+                              name="price"
                               component="span"
                               className="flex flex-col w-full px-2 py-1 my-1 text-xs rounded form-row bg-danger text-danger border-danger"
                             />
