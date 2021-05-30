@@ -1,6 +1,8 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { FirebaseContext } from '../firebase'
-import Modal from './modal'
+import Modal from './modalAddProduct'
+import Swal from 'sweetalert2'
+
 import {
   AiOutlineInstagram,
   AiOutlineFacebook,
@@ -31,13 +33,26 @@ export default function Table() {
     })
     setPeople(people)
   }
-  const deleteSeller = async id => {
-    try {
-      await firebase.db.collection('sellers').doc(id).delete()
-    } catch (err) {
-      console.log(err)
-    }
+  const deleteSeller = id => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then(result => {
+      if (result.isConfirmed) {
+        try {
+          firebase.db.collection('sellers').doc(id).delete()
+        } catch (err) {
+          console.log(err)
+        }
+      }
+    })
   }
+
   return (
     <div className="flex flex-col mx-5">
       <div className="overflow-x-auto">
@@ -72,12 +87,18 @@ export default function Table() {
                     scope="col"
                     className="py-3 text-xs font-medium tracking-wider text-left uppercase text-neutral"
                   ></th>
+                  <th scope="col" className="relative py-3"></th>
                   <th
                     scope="col"
                     className="py-3 text-xs font-medium tracking-wider text-left uppercase text-neutral"
                   ></th>
-                  <th scope="col" className="relative py-3">
-                    <span className="sr-only">Edit</span>
+                  <th
+                    scope="col"
+                    className="py-3 text-lg font-medium tracking-wider text-left uppercase ml-5text-xs text-neutral"
+                  >
+                    <button>
+                      <AiOutlineUserAdd />
+                    </button>
                   </th>
                 </tr>
               </thead>

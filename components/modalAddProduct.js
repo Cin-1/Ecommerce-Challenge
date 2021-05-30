@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react'
 import * as Yup from 'yup'
-import Layout from '../components/layouts/layout'
+import Layout from './layouts/layout'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { FirebaseContext } from '../firebase'
 import Router from 'next/router'
