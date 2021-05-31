@@ -9,23 +9,27 @@ module.exports = {
       danger: 'rgb(255, 245, 245)',
       successhover: '#5241A7',
       navbar: '#1f2937',
+      light: '#bdbdbd',
       table: ''
     },
-    border: {
+    borderColor: {
+      success: '#9582E1',
+      successhover: '#5241A7',
       danger: 'rgb(245, 101, 101)'
     },
     divideColor: {
       primary: '#D3D3D3'
-    },
-    fontFamily: {
-      sans: ['Helvetica', 'Arial', 'sans-serif']
     },
     textColor: {
       primary: '#262626',
       secondary: '#f2522e',
       neutral: '#fff',
       danger: '#bf452a',
-      success: '#737373'
+      success: '#9582E1',
+      light: '#bdbdbd'
+    },
+    fontFamily: {
+      montserrat: ['Montserrat', 'sans-serif']
     },
     fontSize: {
       xs: '.75rem',

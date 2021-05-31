@@ -2,16 +2,14 @@ import React, { useState, useContext } from 'react'
 import Router, { useRouter } from 'next/router'
 import FileUploader from 'react-firebase-file-uploader'
 import * as Yup from 'yup'
-import Layout from '../components/layouts/layout'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
-import GridAdmin from '../components/gridAdmin'
 import { FirebaseContext } from '../firebase'
 
 const initialValues = {
   email: '',
   name: '',
   title: '',
-  tiktok: '',
+  facebook: '',
   instagram: ''
 }
 
@@ -23,8 +21,8 @@ const sellerSchema = Yup.object().shape({
   title: Yup.string()
     .required('Title is required')
     .min(5, 'Title is too short - should be 5 chars minimum'),
-  tiktok: Yup.string()
-    .required('TikTok is required')
+  facebook: Yup.string()
+    .required('facebook is required')
     .matches(
       /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
       'Enter correct url!'
@@ -72,19 +70,17 @@ const NewSeller = () => {
 
   return (
     <>
-      <Layout />
       <Formik
         initialValues={initialValues}
         validationSchema={sellerSchema}
         onSubmit={async function createSeller(values, { resetForm }) {
-          console.log('en el submit')
           try {
-            const { email, name, title, tiktok, instagram } = values
+            const { email, name, title, facebook, instagram } = values
             const NewSeller = {
               email,
               name,
               title,
-              tiktok,
+              facebook,
               instagram,
               urlImg,
               created: Date.now(),
@@ -100,7 +96,7 @@ const NewSeller = () => {
         {formik => {
           const { errors, touched, isValid, dirty } = formik
           return (
-            <div className="w-full h-full bg-primary">
+            <div className="w-full h-full bg-primary h-screen">
               <div className="flex justify-center mb-6">
                 <div className="flex flex-col items-center justify-center mt-8 rounded bg-secondary h-80 register-box sm:w-96">
                   <h1 className="mb-4 text-2xl italic text-neutral">
@@ -173,21 +169,21 @@ const NewSeller = () => {
                           />
                         </div>
                         <div className="flex flex-col mb-2 rounded form-row">
-                          <label htmlFor="tiktok" className="text-neutral">
-                            TikTok
+                          <label htmlFor="facebook" className="text-neutral">
+                            facebook
                           </label>
                           <Field
                             type="text"
-                            name="tiktok"
-                            id="tiktok"
+                            name="facebook"
+                            id="facebook"
                             className={
-                              errors.tiktok && touched.tiktok
+                              errors.facebook && touched.facebook
                                 ? 'rounded-alert'
                                 : 'rounded'
                             }
                           />
                           <ErrorMessage
-                            name="tiktok"
+                            name="facebook"
                             component="span"
                             className="w-full px-2 py-1 my-1 text-xs rounded error bg-danger text-danger border-danger"
                           />
@@ -239,7 +235,6 @@ const NewSeller = () => {
                   </Form>
                 </div>
               </div>
-              <GridAdmin />
             </div>
           )
         }}

@@ -80,7 +80,7 @@ export default function Modal({ person }) {
         return (
           <>
             <button
-              className="h-8 py-3 text-sm duration-300 rounded bg-success hover:bg-successhover text-neutral"
+              className="py-2 text-sm duration-300 rounded bg-success hover:bg-successhover text-neutral"
               type="button"
               onClick={() => setShowModal(true)}
             >
@@ -89,13 +89,13 @@ export default function Modal({ person }) {
 
             {showModal ? (
               <>
-                <div className="fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none bg-neutral text-primary ">
+                <div className="fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto bg-opacity-50 outline-none focus:outline-none bg-primary text-primary ">
                   <div className="relative w-auto max-w-3xl mx-auto my-6">
                     {/*content*/}
                     <div className="relative flex flex-col w-full bg-white border-0 rounded-lg shadow-lg outline-none focus:outline-none">
                       {/*header*/}
-                      <div className="flex items-start justify-between p-5 border-b border-solid rounded-t border-blueGray-200">
-                        <h3 className="text-3xl font-semibold">
+                      <div className="flex items-start justify-between p-5 border-b border-solid rounded-t border-blueGray-200 bg-primary">
+                        <h3 className="text-3xl font-semibold text-success">
                           Add product for {person.name}
                         </h3>
                         <button
@@ -136,7 +136,7 @@ export default function Modal({ person }) {
                             Price
                           </label>
                           <Field
-                            type="number"
+                            type="number21"
                             name="price"
                             id="price"
                             className={
@@ -189,7 +189,7 @@ export default function Modal({ person }) {
                         {/*footer*/}
                         <div className="flex items-center justify-end p-6 border-t border-solid rounded-b border-blueGray-200">
                           <button
-                            className="px-6 py-2 mb-1 mr-1 text-sm font-bold text-red-500 uppercase transition-all duration-150 ease-linear outline-none background-transparent focus:outline-none"
+                            className="px-6 py-2 mb-1 mr-1 text-sm font-bold uppercase transition-all duration-150 ease-linear outline-none text-neutral background-transparent focus:outline-none"
                             type="button"
                             onClick={() => setShowModal(false)}
                           >
@@ -197,7 +197,7 @@ export default function Modal({ person }) {
                           </button>
                           <button
                             type="submit"
-                            className="w-full h-8 mt-4 duration-300 rounded bg-success hover:bg-successhover text-neutral"
+                            className="w-full h-8 mt-4 font-bold duration-300 rounded bg-success hover:bg-successhover text-neutral"
                             disabled={!(dirty && isValid)}
                           >
                             Save Changes
