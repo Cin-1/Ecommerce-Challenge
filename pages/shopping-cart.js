@@ -4,7 +4,7 @@ import Cart from '../components/cart'
 
 const Admin = () => {
   return (
-    <div className="bg-primary">
+    <div className="bg-primary h-screen">
       <Layout />
       <Cart />
     </div>

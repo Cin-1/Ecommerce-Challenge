@@ -4,7 +4,7 @@ import GridAdmin from '../components/gridAdmin'
 
 const Admin = () => {
   return (
-    <div className="bg-primary">
+    <div className="bg-primary h-screen">
       <Layout />
       <GridAdmin />
     </div>

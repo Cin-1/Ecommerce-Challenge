@@ -37,13 +37,13 @@ const Login = () => {
       {formik => {
         const { errors, touched, isValid, dirty } = formik
         return (
-          <div className="flex items-center justify-center bg-primary h-screen w-full">
-            <div className="flex flex-col items-center justify-center bg-secondary h-96 w-80 sm:w-96 login-box rounded">
-              <h1 className="italic text-2xl text-neutral mb-6">
+          <div className="flex items-center justify-center w-full h-screen bg-primary font-montserrat">
+            <div className="flex flex-col items-center justify-center rounded bg-secondary h-96 w-80 sm:w-96 login-box">
+              <h1 className="mb-6 text-2xl italic text-neutral">
                 Login to continue
               </h1>
               <Form className="w-full px-4">
-                <div className="flex flex-col form-row mb-2 rounded">
+                <div className="flex flex-col mb-2 rounded form-row">
                   {userError && <p>{userError}</p>}
                   <label htmlFor="email" className="text-neutral">
                     Email
@@ -62,11 +62,11 @@ const Login = () => {
                     <ErrorMessage
                       name="email"
                       component="span"
-                      className=" flex flex-col form-row  text-xs bg-danger text-danger px-2 w-full border-danger rounded py-1 my-1"
+                      className="flex flex-col w-full px-2 py-1 my-1 text-xs rounded  form-row bg-danger text-danger border-danger"
                     />
                   </div>
                 </div>
-                <div className="flex flex-col form-row rounded">
+                <div className="flex flex-col rounded form-row">
                   <label htmlFor="password" className="text-neutral">
                     Password
                   </label>
@@ -84,14 +84,14 @@ const Login = () => {
                     <ErrorMessage
                       name="password"
                       component="span"
-                      className=" flex flex-col form-row text-xs bg-danger text-danger  px-2 w-full border-danger rounded py-1 my-1"
+                      className="flex flex-col w-full px-2 py-1 my-1 text-xs rounded  form-row bg-danger text-danger border-danger"
                     />
                   </div>
                 </div>
 
                 <button
                   type="submit"
-                  className="bg-success hover:bg-successhover duration-300 text-neutral h-8 w-full mt-10 rounded"
+                  className="w-full h-8 mt-10 duration-300 rounded bg-success hover:bg-successhover text-neutral"
                   disabled={!(dirty && isValid)}
                 >
                   Login

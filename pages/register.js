@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import * as Yup from 'yup'
-import Layout from '../components/layouts/layout'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import firebase from '../firebase'
 import Router from 'next/router'
@@ -49,7 +48,7 @@ const Register = () => {
       {formik => {
         const { errors, touched, isValid, dirty } = formik
         return (
-          <div className="flex items-center justify-center w-full h-screen bg-primary">
+          <div className="flex items-center justify-center w-full h-screen bg-primary font-montserrat">
             <div className="flex flex-col items-center justify-center rounded bg-secondary h-96 register-box sm:w-96">
               <h1 className="mb-6 text-2xl italic text-neutral">
                 Register to continue

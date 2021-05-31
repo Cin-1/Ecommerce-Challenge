@@ -32,14 +32,14 @@ function Products() {
   }
 
   return (
-    <>
+    <div className="h-screen bg-primary">
       <Layout />
       <div className="flex flex-wrap bg-primary">
         {productsData.map(product => (
           <ProductsCard key={product.id} product={product} />
         ))}
-      </div>{' '}
-    </>
+      </div>
+    </div>
   )
 }
 export default Products

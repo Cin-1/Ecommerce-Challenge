@@ -54,7 +54,7 @@ export default function Table() {
   }
 
   return (
-    <div className="flex flex-col mx-5">
+    <div className="flex flex-col mx-5 font-montserrat">
       <div className="overflow-x-auto">
         <div className="inline-block w-full align-middle">
           <div className="mx-1 overflow-hidden sm:rounded-lg">
@@ -96,9 +96,11 @@ export default function Table() {
                     scope="col"
                     className="py-3 text-lg font-medium tracking-wider text-left uppercase ml-5text-xs text-neutral"
                   >
-                    <button>
-                      <AiOutlineUserAdd />
-                    </button>
+                    <Link href="/products/new">
+                      <button>
+                        <AiOutlineUserAdd />
+                      </button>
+                    </Link>
                   </th>
                 </tr>
               </thead>
@@ -111,7 +113,7 @@ export default function Table() {
                           <img
                             className="w-10 h-10 rounded-full"
                             src={person.urlImg}
-                            alt=""
+                            alt="user avatar"
                           />
                         </div>
                         <div className="ml-4">
